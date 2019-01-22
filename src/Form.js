@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Label, Button, Input} from 'reactstrap';
+import { Label, Button, Input, Alert} from 'reactstrap';
 
 const showResults = (values) => {
   window.alert(JSON.stringify(values,null,2))
@@ -26,7 +26,16 @@ const renderInput = ({input,meta,label,placeholder}) =>
           {JSON.stringify(meta,0,2)}
         </pre>
         <Label>{label}</Label>
+
+        
+        
         <Input placeholder={placeholder} { ...input} />
+
+        {/* display error from meta */}
+        {/* short circuit oerator */}
+        {meta.error && meta.touched &&
+         <Alert>{meta.error}</Alert>}
+
      </div>
 
 //prop handleSubmit is  injected by reduxForm
