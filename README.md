@@ -1,2 +1,2 @@
-created renderInput which receives meta
-can now see the various states of fields
+If field is touched and still in error,
+the error is displayed
