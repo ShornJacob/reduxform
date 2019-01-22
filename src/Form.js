@@ -6,8 +6,31 @@ const showResults = (values) => {
   window.alert(JSON.stringify(values,null,2))
 }
 
-//props are injected by reduxForm
-let DemoForm = ({handleSubmit}) => {
+const validate = values => {
+  const errors = {}
+
+  if(!values.firstName) {
+    errors.firstName = "Required"
+  }
+
+  if(!values.email) {
+    errors.email = "Required"
+  }
+
+  return errors
+}
+
+const renderInput = ({input,meta,label}) => 
+     <div>
+        <pre>
+          {JSON.stringify(meta,0,2)}
+        </pre>
+        <label>{label}</label>
+        <input { ...input} />
+     </div>
+
+//prop handleSubmit is  injected by reduxForm
+let DemoForm = ({handleSubmit, submitting}) => {
   return (
     <form onSubmit={handleSubmit(showResults)}>
       <div>
@@ -15,7 +38,8 @@ let DemoForm = ({handleSubmit}) => {
         <div>
           <Field
             name="firstName"
-            component="input"
+            label="firstname"
+            component={renderInput}
             type={"text"}
             placeholder="First Name"
           />
@@ -25,19 +49,20 @@ let DemoForm = ({handleSubmit}) => {
         <div>
           <Field
             name="email"
-            component="input"
+            component={renderInput}
             type={"email"}
             placeholder="Email"
           />
         </div>
-        <Button  type="submit">Submit</Button>
+        <Button  type="submit" >Submit</Button>
       </div>
       </form>
   )
 }
 DemoForm = reduxForm ({
   form : 'demo',
-  destroyOnUnmount : false
+  destroyOnUnmount : false,
+  validate
 })(DemoForm)
 
 export default DemoForm
