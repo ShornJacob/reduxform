@@ -34,7 +34,7 @@ let DemoForm = ({handleSubmit, submitting}) => {
   return (
     <form onSubmit={handleSubmit(showResults)}>
       <div>
-        <Label>First Name</Label>
+
         <div>
           <Field
             name="firstName"
@@ -45,10 +45,11 @@ let DemoForm = ({handleSubmit, submitting}) => {
           />
         </div>
 
-        <Label>Email</Label>
+
         <div>
           <Field
             name="email"
+            label="email"
             component={renderInput}
             type={"email"}
             placeholder="Email"
