@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Label, Button} from 'reactstrap';
+import { Label, Button, Input} from 'reactstrap';
 
 const showResults = (values) => {
   window.alert(JSON.stringify(values,null,2))
@@ -25,8 +25,8 @@ const renderInput = ({input,meta,label}) =>
         <pre>
           {JSON.stringify(meta,0,2)}
         </pre>
-        <label>{label}</label>
-        <input { ...input} />
+        <Label>{label}</Label>
+        <Input { ...input} />
      </div>
 
 //prop handleSubmit is  injected by reduxForm
@@ -34,26 +34,11 @@ let DemoForm = ({handleSubmit, submitting}) => {
   return (
     <form onSubmit={handleSubmit(showResults)}>
       <div>
-        <Label>First Name</Label>
-        <div>
-          <Field
-            name="firstName"
-            label="firstname"
-            component={renderInput}
-            type={"text"}
-            placeholder="First Name"
-          />
-        </div>
 
-        <Label>Email</Label>
-        <div>
-          <Field
-            name="email"
-            component={renderInput}
-            type={"email"}
-            placeholder="Email"
-          />
-        </div>
+
+          <Field name="firstName"  label="firstname"   component={renderInput}   type={"text"}  placeholder="First Name"   />
+          <Field name="email" label="email" component={renderInput}  type={"email"}  placeholder="Email"    />
+
         <Button  type="submit" >Submit</Button>
       </div>
       </form>
