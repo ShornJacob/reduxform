@@ -29,7 +29,7 @@ const renderInput = ({input,meta,label}) =>
         <input { ...input} />
      </div>
 
-//prop handleSubmit is  injected by reduxForm
+//props are  injected by reduxForm
 let DemoForm = ({handleSubmit, submitting}) => {
   return (
     <form onSubmit={handleSubmit(showResults)}>
