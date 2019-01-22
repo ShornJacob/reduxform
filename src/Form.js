@@ -20,13 +20,13 @@ const validate = values => {
   return errors
 }
 
-const renderInput = ({input,meta,label}) => 
+const renderInput = ({input,meta,label,placeholder}) => 
      <div>
         <pre>
           {JSON.stringify(meta,0,2)}
         </pre>
         <Label>{label}</Label>
-        <Input { ...input} />
+        <Input placeholder={placeholder} { ...input} />
      </div>
 
 //prop handleSubmit is  injected by reduxForm
