@@ -1,27 +1,38 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { Label, Button} from 'reactstrap';
 
-let Form = (props) => {
 
+let DemoForm = (props) => {
   return (
     <form>
       <div>
-        <label>First Name</label>
+        <Label>First Name</Label>
         <div>
           <Field
             name="firstName"
             component="input"
-            type="text"
+            type={"text"}
             placeholder="First Name"
           />
         </div>
-        <button type="submit">Submit</button>
+
+        <Label>Email</Label>
+        <div>
+          <Field
+            name="email"
+            component="input"
+            type={"email"}
+            placeholder="Email"
+          />
+        </div>
+        <Button  type="submit">Submit</Button>
       </div>
       </form>
   )
 }
-Form = reduxForm ({
-  form : 'simple'
-})(Form)
+DemoForm = reduxForm ({
+  form : 'demo'
+})(DemoForm)
 
-export default Form
+export default DemoForm
