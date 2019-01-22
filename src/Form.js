@@ -2,10 +2,14 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Label, Button} from 'reactstrap';
 
+const showResults = (values) => {
+  window.alert(JSON.stringify(values,null,2))
+}
 
-let DemoForm = (props) => {
+//props are injected by reduxForm
+let DemoForm = ({handleSubmit}) => {
   return (
-    <form>
+    <form onSubmit={handleSubmit(showResults)}>
       <div>
         <Label>First Name</Label>
         <div>
@@ -32,7 +36,8 @@ let DemoForm = (props) => {
   )
 }
 DemoForm = reduxForm ({
-  form : 'demo'
+  form : 'demo',
+  destroyOnUnmount : false
 })(DemoForm)
 
 export default DemoForm
